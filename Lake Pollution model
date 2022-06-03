@@ -1,0 +1,13 @@
+function dcdt=lake(t,c)
+cin=0;
+v=500000;
+v1=10000;
+dcdt=zeros(1,1);
+dcdt(1)=(v1/v)*(cin-c);
+end
+syms c(t) cin v v1
+f=diff(c,t)==(v1/v)*(cin-c);
+c1=c(0)==5;
+dsolve(f,c1)
+[t,c]=ode45(@lake,[0 250],5);
+plot(t,c,'o-');xlabel('time');ylabel('concentration');title('lake pollution model');
