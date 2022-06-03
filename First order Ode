@@ -1,0 +1,7 @@
+syms y(x)
+f=diff(y,x)==cos(8*x)+x^2;
+c=y(0)==-1;
+solution=dsolve(f,c)
+f1=@(x,y)(cos(8*x)+x^2);
+[x,y]=ode45(f1,[0,1],-1);
+plot(x,y,'o-');xlabel('x');ylabel('y');title('solution of first ode');
