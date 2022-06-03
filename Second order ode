@@ -1,0 +1,15 @@
+functiondxdt=myfunode(t,x)
+dxdt=zeros(2,1);
+dxdt(1)=x(2);
+dxdt(2)=20-(7*x(2))-(10*x(1));
+end
+syms x(t)
+dx=diff(x);
+dx2=diff(x,t,2);
+equation=dx2+(7*dx)+(10*x)==20;
+c1=x(0)==5;
+c2=dx(0)==3;
+x(t)=dsolve(equation,c1,c2)
+[t,x]=ode45(@myfunode,[0 5],[5 3]);
+plot(t,x(:,1),'.');xlabel('t');ylabel('x');title('solution of 2nd ode');
+grid on
