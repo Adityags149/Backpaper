@@ -1,0 +1,9 @@
+Growth Model
+function dpdt=func(t,p)
+dpdt=zeros(1,1);
+r=0.50;
+dpdt(1)=r*p;
+end
+syms p(t)rs=dsolve(diff(p,t)==r*p,p(0)==1000)
+[t,p]=ode45(@func,[0,7],1000);
+plot(t,p,'.');xlabel('time');ylabel('population');title('growth model');grid on
