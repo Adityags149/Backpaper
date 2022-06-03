@@ -1,0 +1,2 @@
+x=input('Enter a number of Fibonacci series you want: ');
+a=1;b=1;disp(a);disp(b); for i=[1:x-2]; c=a+b; disp(c); a=b; b=c;i=i+1;end
